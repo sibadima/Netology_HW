@@ -39,13 +39,15 @@ public class HW4_PRIMITIVES {
                         System.out.println("Ваш налог составит: " + taxesEarning(earnings, spendings));
                         System.out.println("Налог на другой системе: " + taxesEarningMinusSpending(earnings, spendings));
                         System.out.println("Экономия: " + (taxesEarningMinusSpending(earnings, spendings) - taxesEarning(earnings, spendings)));
-                    } else {
-                        System.out.println("Мы совутем вам УСН доход минус расходы");
+                    } else if (taxesEarningMinusSpending(earnings, spendings) < taxesEarning(earnings, spendings)){
+                        System.out.println("Мы советуем вам УСН доход минус расходы");
                         System.out.println("Ваш налог составит: " + taxesEarningMinusSpending(earnings, spendings));
                         System.out.println("Налог на другой системе: " + taxesEarning(earnings, spendings));
                         System.out.println("Экономия: " + (taxesEarning(earnings, spendings) - taxesEarningMinusSpending(earnings, spendings)));
+                    } else {
+                        System.out.println("Можете выбрать любую систему налогооблажения");
                     }
-                    break;
+                break;
                 default:
                     System.out.println("Такой операции нет");
 
