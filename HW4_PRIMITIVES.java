@@ -63,7 +63,7 @@ public class HW4_PRIMITIVES {
 
     public static int taxesEarning(int earnings, int spendings) {
 
-        System.out.println("Программа рассчитала налог УСН доходы.");
+        System.out.println("Программа расчитала налог УСН доходы.");
         int tax = earnings * 6 / 100;
         if (tax >= 0) {
             return tax;
@@ -73,7 +73,7 @@ public class HW4_PRIMITIVES {
     }
 
     public static int taxesEarningMinusSpending(int earnings, int spendings) {
-        System.out.println("Программа рассчитала налог УСН доходы минус расходы.");
+        System.out.println("Программа расчитала налог УСН доходы минус расходы.");
         int tax = (earnings - spendings) * 15 / 100;
         if (tax >= 0) {
             return tax;
