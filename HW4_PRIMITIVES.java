@@ -1,6 +1,7 @@
 import java.util.Scanner;
 
 public class HW4_PRIMITIVES {
+
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
@@ -34,20 +35,25 @@ public class HW4_PRIMITIVES {
                     spendings += spend;
                     break;
                 case 3:
-                    if (taxesEarning(earnings, spendings) < taxesEarningMinusSpending(earnings, spendings)) {
+                    // результат вычисления налогов в статических методах сохраняем в переменные типа инт
+                    int taxEarning = taxesEarning(earnings, spendings);
+                    int taxSpendig = taxesEarningMinusSpending(earnings, spendings);
+
+                    if (taxEarning < taxSpendig) {
                         System.out.println("Мы советуем вам УСН доходы");
-                        System.out.println("Ваш налог составит: " + taxesEarning(earnings, spendings));
-                        System.out.println("Налог на другой системе: " + taxesEarningMinusSpending(earnings, spendings));
-                        System.out.println("Экономия: " + (taxesEarningMinusSpending(earnings, spendings) - taxesEarning(earnings, spendings)));
-                    } else if (taxesEarningMinusSpending(earnings, spendings) < taxesEarning(earnings, spendings)){
+                        System.out.println("Ваш налог составит: " + taxEarning);
+                        System.out.println("Налог на другой системе: " + taxSpendig);
+                        System.out.println("Экономия: " + (taxSpendig - taxEarning));
+
+                    } else if (taxSpendig < taxEarning) {
                         System.out.println("Мы советуем вам УСН доход минус расходы");
-                        System.out.println("Ваш налог составит: " + taxesEarningMinusSpending(earnings, spendings));
-                        System.out.println("Налог на другой системе: " + taxesEarning(earnings, spendings));
-                        System.out.println("Экономия: " + (taxesEarning(earnings, spendings) - taxesEarningMinusSpending(earnings, spendings)));
+                        System.out.println("Ваш налог составит: " + taxSpendig);
+                        System.out.println("Налог на другой системе: " + taxEarning);
+                        System.out.println("Экономия: " + (taxEarning - taxSpendig));
                     } else {
                         System.out.println("Можете выбрать любую систему налогооблажения");
                     }
-                break;
+                    break;
                 default:
                     System.out.println("Такой операции нет");
 
@@ -56,6 +62,8 @@ public class HW4_PRIMITIVES {
     }
 
     public static int taxesEarning(int earnings, int spendings) {
+
+        System.out.println("Программа рассчитала налог УСН доходы.");
         int tax = earnings * 6 / 100;
         if (tax >= 0) {
             return tax;
@@ -65,6 +73,7 @@ public class HW4_PRIMITIVES {
     }
 
     public static int taxesEarningMinusSpending(int earnings, int spendings) {
+        System.out.println("Программа рассчитала налог УСН доходы минус расходы.");
         int tax = (earnings - spendings) * 15 / 100;
         if (tax >= 0) {
             return tax;
